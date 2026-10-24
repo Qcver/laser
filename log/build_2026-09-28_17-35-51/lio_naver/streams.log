@@ -1,0 +1,62 @@
+[0.010s] Invoking command in '/home/qcver/laser/build/lio_naver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
+[0.061s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.175s] -- Found rclcpp: 16.0.21 (/opt/ros/humble/share/rclcpp/cmake)
+[0.205s] -- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.207s] -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.213s] -- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.221s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.230s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.257s] -- Found rmw_implementation_cmake: 6.1.4 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.258s] -- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.342s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.393s] -- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+[0.421s] -- Found tf2: 0.25.23 (/opt/ros/humble/share/tf2/cmake)
+[0.425s] -- Found tf2_ros: 0.25.23 (/opt/ros/humble/share/tf2_ros/cmake)
+[0.503s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.556s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.556s] -- Configured cppcheck include dirs: 
+[0.556s] -- Configured cppcheck exclude dirs and/or files: 
+[0.556s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.559s] -- Added test 'lint_cmake' to check CMake code style
+[0.559s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.559s] -- Added test 'uncrustify' to check C / C++ code style
+[0.559s] -- Configured uncrustify additional arguments: 
+[0.559s] -- Added test 'xmllint' to check XML markup files
+[0.560s] -- Configuring done
+[0.576s] -- Generating done
+[0.582s] -- Build files have been written to: /home/qcver/laser/build/lio_naver
+[0.611s] Consolidate compiler generated dependencies of target position_printer
+[0.616s] [ 16%] Building CXX object CMakeFiles/chassis_printer.dir/src/chassis_printer.cpp.o
+[0.617s] [ 33%] Building CXX object CMakeFiles/chassis_odom.dir/src/chassis_odom.cpp.o
+[0.624s] [ 66%] Built target position_printer
+[7.622s] [ 83%] Linking CXX executable chassis_printer
+[7.878s] [100%] Linking CXX executable chassis_odom
+[8.005s] [100%] Built target chassis_printer
+[8.207s] [100%] Built target chassis_odom
+[8.217s] Invoked command in '/home/qcver/laser/build/lio_naver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
+[8.227s] Invoking command in '/home/qcver/laser/build/lio_naver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/qcver/laser/build/lio_naver
+[8.232s] -- Install configuration: ""
+[8.234s] -- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/position_printer
+[8.234s] -- Installing: /home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_odom
+[8.238s] -- Set runtime path of "/home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_odom" to ""
+[8.238s] -- Installing: /home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_printer
+[8.240s] -- Set runtime path of "/home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_printer" to ""
+[8.240s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch
+[8.240s] -- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/chassis_odom.launch.py
+[8.240s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/position_printer.launch.py
+[8.240s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/package_run_dependencies/lio_naver
+[8.240s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/parent_prefix_path/lio_naver
+[8.240s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.sh
+[8.241s] -- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.dsv
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.sh
+[8.241s] -- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.dsv
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.bash
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.sh
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.zsh
+[8.241s] -- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.dsv
+[8.241s] -- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/package.dsv
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/packages/lio_naver
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig.cmake
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig-version.cmake
+[8.241s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/package.xml
+[8.242s] Invoked command in '/home/qcver/laser/build/lio_naver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/qcver/laser/build/lio_naver

@@ -1,0 +1,115 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-c720ca69b1d251e929f0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "lio_naver",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "chassis_odom::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chassis_odom-4303ccb65b4e532368b3.json",
+					"name" : "chassis_odom",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "chassis_printer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chassis_printer-2ea63a2146c85611f154.json",
+					"name" : "chassis_printer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "global_chassis_odom::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-global_chassis_odom-116500c57b18f28dea06.json",
+					"name" : "global_chassis_odom",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "global_chassis_printer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-global_chassis_printer-dd36f4b845ea8ba218c1.json",
+					"name" : "global_chassis_printer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lio_naver_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lio_naver_uninstall-a07b50727360c932109b.json",
+					"name" : "lio_naver_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "position_printer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-position_printer-b30abf430bef2c2104bd.json",
+					"name" : "position_printer",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-26db5c87153f61635624.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/qcver/laser/build/lio_naver",
+		"source" : "/home/qcver/laser/src/lio_naver"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

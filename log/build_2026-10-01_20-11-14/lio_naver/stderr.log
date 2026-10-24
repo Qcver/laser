@@ -1,0 +1,7 @@
+/home/qcver/laser/src/lio_naver/src/global_chassis_odom.cpp: In constructor ‘GlobalChassisOdom::GlobalChassisOdom()’:
+/home/qcver/laser/src/lio_naver/src/global_chassis_odom.cpp:171:42: error: conversion from ‘tf2::Quaternion’ to non-scalar type ‘const tf2::Vector3’ requested
+  171 |     const tf2::Vector3 cam_axis_ = q_CB_ * tf2::Vector3(1, 0, 0);  // 底盘 x(右) 在 body 中的方向
+      |                                    ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/global_chassis_odom.dir/build.make:76：CMakeFiles/global_chassis_odom.dir/src/global_chassis_odom.cpp.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:221：CMakeFiles/global_chassis_odom.dir/all] 错误 2
+gmake: *** [Makefile:146：all] 错误 2

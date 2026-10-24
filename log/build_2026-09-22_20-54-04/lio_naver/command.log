@@ -1,0 +1,4 @@
+Invoking command in '/home/qcver/laser/build/lio_naver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
+Invoked command in '/home/qcver/laser/build/lio_naver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
+Invoking command in '/home/qcver/laser/build/lio_naver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/qcver/laser/build/lio_naver
+Invoked command in '/home/qcver/laser/build/lio_naver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/qcver/laser/build/lio_naver

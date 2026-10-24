@@ -1,0 +1,161 @@
+[0.000000] (-) TimerEvent: {}
+[0.000387] (lio_naver) JobQueued: {'identifier': 'lio_naver', 'dependencies': OrderedDict()}
+[0.003885] (lio_naver) JobStarted: {'identifier': 'lio_naver'}
+[0.014807] (lio_naver) JobProgress: {'identifier': 'lio_naver', 'progress': 'cmake'}
+[0.015729] (lio_naver) JobProgress: {'identifier': 'lio_naver', 'progress': 'build'}
+[0.016782] (lio_naver) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/qcver/laser/build/lio_naver', '--', '-j18', '-l18'], 'cwd': '/home/qcver/laser/build/lio_naver', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PYTHON_BASIC_REPL', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'zh_CN:en'), ('USER', 'qcver'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/qcver'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.138.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '3601'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('SYSTEMD_EXEC_PID', '3776'), ('BUNDLED_DEBUGPY_PATH', '/home/qcver/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '7400'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'qcver'), ('JOURNAL_STREAM', '8:15227'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'qcver'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('FC_FONTATIONS', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/qcver/.config/Code/User/globalStorage/github.copilot-chat/debugCommand:/home/qcver/.config/Code/User/globalStorage/github.copilot-chat/copilotCli:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/qcver/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/qcver-FLMH-XX:@/tmp/.ICE-unix/3750,unix/qcver-FLMH-XX:/tmp/.ICE-unix/3750'), ('INVOCATION_ID', 'a2ef112bde7d43eb859aff18b069a48d'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'wayland'), ('DISPLAY', ':0'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/home/qcver/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-91becb3b214e5ba5.txt'), ('LANG', 'zh_CN.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('PYTHONSTARTUP', '/home/qcver/.config/Code/User/workspaceStorage/112fa96112a5192bfb9377c95bed510b/ms-python.python/pythonrc.py'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.OFPRV3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-1a7184cc1b.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/qcver/laser/build/lio_naver'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('COPILOT_DEBUG_NONCE', '00fb374e14a36a73ccd691ae8b6a884b'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.050552] (lio_naver) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099455] (-) TimerEvent: {}
+[0.191507] (lio_naver) StdoutLine: {'line': b'-- Found rclcpp: 16.0.21 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.199531] (-) TimerEvent: {}
+[0.219643] (lio_naver) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.221969] (lio_naver) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.228883] (lio_naver) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.237886] (lio_naver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.251230] (lio_naver) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.292073] (lio_naver) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.4 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.293584] (lio_naver) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.299642] (-) TimerEvent: {}
+[0.400013] (-) TimerEvent: {}
+[0.408570] (lio_naver) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.464708] (lio_naver) StdoutLine: {'line': b'-- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)\n'}
+[0.499932] (lio_naver) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[0.500292] (-) TimerEvent: {}
+[0.590941] (lio_naver) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[0.591242] (lio_naver) StdoutLine: {'line': b'-- Configured cppcheck include dirs: \n'}
+[0.591340] (lio_naver) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[0.591459] (lio_naver) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[0.591860] (lio_naver) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[0.592182] (lio_naver) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[0.592858] (lio_naver) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[0.592947] (lio_naver) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[0.593222] (lio_naver) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[0.594112] (lio_naver) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.600376] (-) TimerEvent: {}
+[0.604541] (lio_naver) StdoutLine: {'line': b'-- Generating done\n'}
+[0.609328] (lio_naver) StdoutLine: {'line': b'-- Build files have been written to: /home/qcver/laser/build/lio_naver\n'}
+[0.656443] (lio_naver) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/position_printer.dir/src/position_printer.cpp.o\x1b[0m\n'}
+[0.700546] (-) TimerEvent: {}
+[0.800968] (-) TimerEvent: {}
+[0.901400] (-) TimerEvent: {}
+[1.001834] (-) TimerEvent: {}
+[1.102275] (-) TimerEvent: {}
+[1.202751] (-) TimerEvent: {}
+[1.303197] (-) TimerEvent: {}
+[1.403712] (-) TimerEvent: {}
+[1.504147] (-) TimerEvent: {}
+[1.604546] (-) TimerEvent: {}
+[1.704977] (-) TimerEvent: {}
+[1.805499] (-) TimerEvent: {}
+[1.905971] (-) TimerEvent: {}
+[2.006435] (-) TimerEvent: {}
+[2.106913] (-) TimerEvent: {}
+[2.207381] (-) TimerEvent: {}
+[2.307849] (-) TimerEvent: {}
+[2.408306] (-) TimerEvent: {}
+[2.508792] (-) TimerEvent: {}
+[2.609253] (-) TimerEvent: {}
+[2.709752] (-) TimerEvent: {}
+[2.810150] (-) TimerEvent: {}
+[2.910540] (-) TimerEvent: {}
+[3.010954] (-) TimerEvent: {}
+[3.111350] (-) TimerEvent: {}
+[3.211753] (-) TimerEvent: {}
+[3.312141] (-) TimerEvent: {}
+[3.412538] (-) TimerEvent: {}
+[3.512945] (-) TimerEvent: {}
+[3.613326] (-) TimerEvent: {}
+[3.713715] (-) TimerEvent: {}
+[3.814106] (-) TimerEvent: {}
+[3.914506] (-) TimerEvent: {}
+[4.014916] (-) TimerEvent: {}
+[4.115318] (-) TimerEvent: {}
+[4.215715] (-) TimerEvent: {}
+[4.316121] (-) TimerEvent: {}
+[4.416540] (-) TimerEvent: {}
+[4.516948] (-) TimerEvent: {}
+[4.617331] (-) TimerEvent: {}
+[4.717739] (-) TimerEvent: {}
+[4.818165] (-) TimerEvent: {}
+[4.918557] (-) TimerEvent: {}
+[5.018978] (-) TimerEvent: {}
+[5.119381] (-) TimerEvent: {}
+[5.219766] (-) TimerEvent: {}
+[5.320146] (-) TimerEvent: {}
+[5.420527] (-) TimerEvent: {}
+[5.520926] (-) TimerEvent: {}
+[5.621312] (-) TimerEvent: {}
+[5.721685] (-) TimerEvent: {}
+[5.822087] (-) TimerEvent: {}
+[5.922462] (-) TimerEvent: {}
+[6.022844] (-) TimerEvent: {}
+[6.123218] (-) TimerEvent: {}
+[6.223597] (-) TimerEvent: {}
+[6.324010] (-) TimerEvent: {}
+[6.424392] (-) TimerEvent: {}
+[6.524762] (-) TimerEvent: {}
+[6.625127] (-) TimerEvent: {}
+[6.725512] (-) TimerEvent: {}
+[6.825891] (-) TimerEvent: {}
+[6.926255] (-) TimerEvent: {}
+[7.026628] (-) TimerEvent: {}
+[7.127003] (-) TimerEvent: {}
+[7.227398] (-) TimerEvent: {}
+[7.327795] (-) TimerEvent: {}
+[7.428230] (-) TimerEvent: {}
+[7.528637] (-) TimerEvent: {}
+[7.629018] (-) TimerEvent: {}
+[7.729395] (-) TimerEvent: {}
+[7.829782] (-) TimerEvent: {}
+[7.930159] (-) TimerEvent: {}
+[8.030547] (-) TimerEvent: {}
+[8.131081] (-) TimerEvent: {}
+[8.231529] (-) TimerEvent: {}
+[8.332106] (-) TimerEvent: {}
+[8.432504] (-) TimerEvent: {}
+[8.532895] (-) TimerEvent: {}
+[8.633260] (-) TimerEvent: {}
+[8.734425] (-) TimerEvent: {}
+[8.834892] (-) TimerEvent: {}
+[8.935793] (-) TimerEvent: {}
+[9.036227] (-) TimerEvent: {}
+[9.136633] (-) TimerEvent: {}
+[9.237041] (-) TimerEvent: {}
+[9.337438] (-) TimerEvent: {}
+[9.438759] (-) TimerEvent: {}
+[9.539285] (-) TimerEvent: {}
+[9.639751] (-) TimerEvent: {}
+[9.740205] (-) TimerEvent: {}
+[9.826401] (lio_naver) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable position_printer\x1b[0m\n'}
+[9.840339] (-) TimerEvent: {}
+[9.940789] (-) TimerEvent: {}
+[10.041299] (-) TimerEvent: {}
+[10.141756] (-) TimerEvent: {}
+[10.242251] (-) TimerEvent: {}
+[10.278535] (lio_naver) StdoutLine: {'line': b'[100%] Built target position_printer\n'}
+[10.291650] (lio_naver) CommandEnded: {'returncode': 0}
+[10.292445] (lio_naver) JobProgress: {'identifier': 'lio_naver', 'progress': 'install'}
+[10.301925] (lio_naver) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/qcver/laser/build/lio_naver'], 'cwd': '/home/qcver/laser/build/lio_naver', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('PYTHON_BASIC_REPL', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'zh_CN:en'), ('USER', 'qcver'), ('LC_TIME', 'en_US.UTF-8'), ('XDG_SESSION_TYPE', 'wayland'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/qcver'), ('CHROME_DESKTOP', 'code.desktop'), ('TERM_PROGRAM_VERSION', '1.138.0'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '3601'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('SYSTEMD_EXEC_PID', '3776'), ('BUNDLED_DEBUGPY_PATH', '/home/qcver/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy'), ('IM_CONFIG_CHECK_ENV', '1'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '7400'), ('IM_CONFIG_PHASE', '1'), ('WAYLAND_DISPLAY', 'wayland-0'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'qcver'), ('JOURNAL_STREAM', '8:15227'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'qcver'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('FC_FONTATIONS', '1'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/qcver/.config/Code/User/globalStorage/github.copilot-chat/debugCommand:/home/qcver/.config/Code/User/globalStorage/github.copilot-chat/copilotCli:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/qcver/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts'), ('SESSION_MANAGER', 'local/qcver-FLMH-XX:@/tmp/.ICE-unix/3750,unix/qcver-FLMH-XX:/tmp/.ICE-unix/3750'), ('INVOCATION_ID', 'a2ef112bde7d43eb859aff18b069a48d'), ('PAPERSIZE', 'letter'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'en_US.UTF-8'), ('GNOME_SETUP_DISPLAY', ':1'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'wayland'), ('DISPLAY', ':0'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/home/qcver/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-91becb3b214e5ba5.txt'), ('LANG', 'zh_CN.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('PYTHONSTARTUP', '/home/qcver/.config/Code/User/workspaceStorage/112fa96112a5192bfb9377c95bed510b/ms-python.python/pythonrc.py'), ('LC_TELEPHONE', 'en_US.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/.mutter-Xwaylandauth.OFPRV3'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-1a7184cc1b.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'en_US.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'en_US.UTF-8'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'en_US.UTF-8'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/qcver/laser/build/lio_naver'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('COPILOT_DEBUG_NONCE', '00fb374e14a36a73ccd691ae8b6a884b'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'en_US.UTF-8'), ('LC_PAPER', 'en_US.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[10.311747] (lio_naver) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[10.311999] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/lib/lio_naver/position_printer\n'}
+[10.314999] (lio_naver) StdoutLine: {'line': b'-- Set runtime path of "/home/qcver/laser/install/lio_naver/lib/lio_naver/position_printer" to ""\n'}
+[10.315156] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/launch\n'}
+[10.315263] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/position_printer.launch.py\n'}
+[10.315350] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/package_run_dependencies/lio_naver\n'}
+[10.315487] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/parent_prefix_path/lio_naver\n'}
+[10.315572] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.sh\n'}
+[10.315699] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.dsv\n'}
+[10.315809] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.sh\n'}
+[10.315942] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.dsv\n'}
+[10.316047] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.bash\n'}
+[10.316128] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.sh\n'}
+[10.316263] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.zsh\n'}
+[10.316346] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.dsv\n'}
+[10.316428] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/package.dsv\n'}
+[10.316530] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/packages/lio_naver\n'}
+[10.316612] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig.cmake\n'}
+[10.316701] (lio_naver) StdoutLine: {'line': b'-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig-version.cmake\n'}
+[10.316785] (lio_naver) StdoutLine: {'line': b'-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/package.xml\n'}
+[10.318244] (lio_naver) CommandEnded: {'returncode': 0}
+[10.334271] (lio_naver) JobEnded: {'identifier': 'lio_naver', 'rc': 0}
+[10.334937] (-) EventReactorShutdown: {}

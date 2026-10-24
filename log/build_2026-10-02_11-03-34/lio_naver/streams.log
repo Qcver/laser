@@ -1,0 +1,39 @@
+[0.010s] Invoking command in '/home/qcver/laser/build/lio_naver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
+[0.088s] [ 20%] Built target global_chassis_printer
+[0.088s] [ 40%] Built target chassis_printer
+[0.091s] [ 60%] Built target chassis_odom
+[0.098s] [ 70%] [32mBuilding CXX object CMakeFiles/global_chassis_odom.dir/src/global_chassis_odom.cpp.o[0m
+[0.101s] [ 90%] Built target position_printer
+[6.291s] [100%] [32m[1mLinking CXX executable global_chassis_odom[0m
+[6.637s] [100%] Built target global_chassis_odom
+[6.647s] Invoked command in '/home/qcver/laser/build/lio_naver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
+[6.656s] Invoking command in '/home/qcver/laser/build/lio_naver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/qcver/laser/build/lio_naver
+[6.662s] -- Install configuration: ""
+[6.662s] -- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/position_printer
+[6.663s] -- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_odom
+[6.663s] -- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_printer
+[6.664s] -- Installing: /home/qcver/laser/install/lio_naver/lib/lio_naver/global_chassis_odom
+[6.666s] -- Set runtime path of "/home/qcver/laser/install/lio_naver/lib/lio_naver/global_chassis_odom" to ""
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/global_chassis_printer
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/__pycache__
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/__pycache__/chassis_odom.launch.cpython-310.pyc
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/chassis_odom.launch.py
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/position_printer.launch.py
+[6.667s] -- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/global_chassis_odom.launch.py
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/package_run_dependencies/lio_naver
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/parent_prefix_path/lio_naver
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.sh
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.dsv
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.sh
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.dsv
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.bash
+[6.667s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.sh
+[6.668s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.zsh
+[6.668s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.dsv
+[6.668s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/package.dsv
+[6.668s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/packages/lio_naver
+[6.668s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig.cmake
+[6.668s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig-version.cmake
+[6.668s] -- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/package.xml
+[6.669s] Invoked command in '/home/qcver/laser/build/lio_naver' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/qcver/laser/build/lio_naver

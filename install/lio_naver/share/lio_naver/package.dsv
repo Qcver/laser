@@ -1,0 +1,8 @@
+source;share/lio_naver/hook/cmake_prefix_path.ps1
+source;share/lio_naver/hook/cmake_prefix_path.dsv
+source;share/lio_naver/hook/cmake_prefix_path.sh
+source;share/lio_naver/local_setup.bash
+source;share/lio_naver/local_setup.dsv
+source;share/lio_naver/local_setup.ps1
+source;share/lio_naver/local_setup.sh
+source;share/lio_naver/local_setup.zsh

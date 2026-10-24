@@ -1,0 +1,32 @@
+[ 20%] Built target chassis_odom
+[ 60%] Built target position_printer
+[ 60%] Built target chassis_printer
+[ 80%] Built target global_chassis_printer
+[100%] Built target global_chassis_odom
+-- Install configuration: ""
+-- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/position_printer
+-- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_odom
+-- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/chassis_printer
+-- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/global_chassis_odom
+-- Up-to-date: /home/qcver/laser/install/lio_naver/lib/lio_naver/global_chassis_printer
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/__pycache__
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/__pycache__/chassis_odom.launch.cpython-310.pyc
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/chassis_odom.launch.py
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/position_printer.launch.py
+-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/launch/global_chassis_odom.launch.py
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/package_run_dependencies/lio_naver
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/parent_prefix_path/lio_naver
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.sh
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.sh
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/environment/path.dsv
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.bash
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.sh
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.zsh
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/local_setup.dsv
+-- Installing: /home/qcver/laser/install/lio_naver/share/lio_naver/package.dsv
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/ament_index/resource_index/packages/lio_naver
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig.cmake
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/cmake/lio_naverConfig-version.cmake
+-- Up-to-date: /home/qcver/laser/install/lio_naver/share/lio_naver/package.xml

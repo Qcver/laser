@@ -1,0 +1,42 @@
+[0.010s] Invoking command in '/home/qcver/laser/build/lio_naver': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
+[0.057s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.153s] -- Found rclcpp: 16.0.21 (/opt/ros/humble/share/rclcpp/cmake)
+[0.182s] -- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.183s] -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.189s] -- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.196s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.205s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.229s] -- Found rmw_implementation_cmake: 6.1.4 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.230s] -- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.302s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.351s] -- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+[0.374s] -- Found tf2: 0.25.23 (/opt/ros/humble/share/tf2/cmake)
+[0.377s] -- Found tf2_ros: 0.25.23 (/opt/ros/humble/share/tf2_ros/cmake)
+[0.451s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.505s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.505s] -- Configured cppcheck include dirs: 
+[0.505s] -- Configured cppcheck exclude dirs and/or files: 
+[0.505s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.505s] -- Added test 'lint_cmake' to check CMake code style
+[0.506s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.506s] -- Added test 'uncrustify' to check C / C++ code style
+[0.506s] -- Configured uncrustify additional arguments: 
+[0.506s] -- Added test 'xmllint' to check XML markup files
+[0.507s] -- Configuring done
+[0.524s] -- Generating done
+[0.530s] -- Build files have been written to: /home/qcver/laser/build/lio_naver
+[0.556s] Consolidate compiler generated dependencies of target position_printer
+[0.557s] Consolidate compiler generated dependencies of target chassis_printer
+[0.557s] Consolidate compiler generated dependencies of target chassis_odom
+[0.562s] [ 12%] Building CXX object CMakeFiles/global_chassis_odom.dir/src/global_chassis_odom.cpp.o
+[0.568s] [ 37%] Built target chassis_printer
+[0.569s] [ 62%] Built target position_printer
+[0.569s] [ 87%] Built target chassis_odom
+[2.389s] /home/qcver/laser/src/lio_naver/src/global_chassis_odom.cpp: In constructor ‘GlobalChassisOdom::GlobalChassisOdom()’:
+[2.389s] /home/qcver/laser/src/lio_naver/src/global_chassis_odom.cpp:171:42: error: conversion from ‘tf2::Quaternion’ to non-scalar type ‘const tf2::Vector3’ requested
+[2.389s]   171 |     const tf2::Vector3 cam_axis_ = q_CB_ * tf2::Vector3(1, 0, 0);  // 底盘 x(右) 在 body 中的方向
+[2.389s]       |                                    ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+[4.314s] gmake[2]: *** [CMakeFiles/global_chassis_odom.dir/build.make:76：CMakeFiles/global_chassis_odom.dir/src/global_chassis_odom.cpp.o] 错误 1
+[4.315s] gmake[1]: *** [CMakeFiles/Makefile2:221：CMakeFiles/global_chassis_odom.dir/all] 错误 2
+[4.315s] gmake: *** [Makefile:146：all] 错误 2
+[4.317s] Invoked command in '/home/qcver/laser/build/lio_naver' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/qcver/laser/build/lio_naver -- -j18 -l18
