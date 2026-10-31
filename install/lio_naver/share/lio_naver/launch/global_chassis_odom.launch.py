@@ -62,8 +62,8 @@ def generate_launch_description():
             'trim_z': 0.04412,
 
             # ---- 全局偏置：开机时底盘中心在 map 中的位姿 ----
-            'map_x': 0.663,
-            'map_y': 0.875,
+            'map_x': 0.163,
+            'map_y': 0.375,
             'map_z': 0.15,
             'map_yaw_deg': 0.0,
 
