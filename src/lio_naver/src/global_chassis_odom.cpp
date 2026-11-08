@@ -1,7 +1,7 @@
 // global_chassis_odom.cpp
 //
 // 作用：把 Point-LIO 的 /aft_mapped_to_init 换算成
-//       “**底盘中心**在**地图系 map** 中的位姿”，并输出速度与 TF。
+//       “底盘中心在地图系 map 中的位姿”，并输出速度与 TF。
 //
 //   底盘坐标系 C：x 右 / y 前 / z 上（右手系）
 //   body 坐标系 B：x 前 / y 左 / z 上（Point-LIO 输出，假设值）
@@ -28,7 +28,7 @@
 //            map -> camera_init = A*anchor  静态常量，把 Point-LIO 的 TF 树接进来
 //            base_link -> body = T_BC^-1    可选（默认关闭：body 已由 camera_init 作父系）
 //
-// ⚠️ 若同时运行 chassis_odom，请把它的 publish_tf 置为 false，否则 base_link
+//    若同时运行 chassis_odom，请把它的 publish_tf 置为 false，否则 base_link
 //    会同时有 chassis_init 与 map 两个父系，TF 会报多父系错误。
 
 #include <rclcpp/rclcpp.hpp>
@@ -86,7 +86,7 @@ public:
     }
 
     // ---------------- 安装姿态（已标定值）----------------
-    // 2026-10-01 直行标定：车头方向与 body x 轴相差约 58°（详见 chassis_odom.launch.py 注释）
+    // 直行标定：车头方向与 body x 轴相差约 58°（详见 chassis_odom.launch.py 注释）
     mount_roll_deg_ = this->declare_parameter<double>("mount_roll_deg", 0.0);
     mount_pitch_deg_ = this->declare_parameter<double>("mount_pitch_deg", 0.0);
     mount_yaw_deg_ = this->declare_parameter<double>("mount_yaw_deg", 58.0);

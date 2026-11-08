@@ -1,6 +1,6 @@
 // global_chassis_printer.cpp
 //
-// 作用：打印 / 记录 **底盘中心在全局系 map 中相对全局原点的位姿**。
+// 作用：打印 / 记录 底盘中心在全局系 map 中相对全局原点的位姿。
 //
 //   订阅：/global/chassis_odom（由 global_chassis_odom 节点发布）
 //         header.frame_id = map，child_frame_id = base_link

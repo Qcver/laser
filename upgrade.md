@@ -1,22 +1,21 @@
-# Point-LIO 源码优化记录（2026-10-24）
+# Point-LIO 源码优化
 
 > **范围**：`~/point_lio/src/9000_point_lio_ros2_Mid-360`（上游 `9000_point_lio_ros2_Mid-360` fork）
 > **改动规模**：6 个文件，+79 / −22 行（`config/mid360.yaml` 未改动，那是此前的人工调参）
-> **状态**：已 `colcon build` 通过，已用合成数据做端到端冒烟验证，**尚未实车回归**
 
 ## 目录
 
-| # | 优化项 | 类型 | 文件 | 收益 |
-| - | ------ | ---- | ---- | ---- |
-| 1 | `blind` 判据括号优先级 bug | 🐞 正确性 | `src/preprocess.cpp` | 盲区过滤从"基本失效"变为生效 |
-| 2 | **点时间戳被错误改写** | 🐞 **正确性（严重）** | `src/preprocess.cpp` | 单帧耗时 **221 ms → 3.8 ms**；恢复逐点运动补偿 |
-| 3 | iEKF 迭代次数可配 + 协方差更新时机 | 🔧 能力 + 正确性 | `include/IKFoM/.../esekfom.hpp`、`src/parameters.*`、`src/laserMapping.cpp` | 可调精度/算力；避免协方差过度收缩 |
-| 4 | 启动自检日志 | 🔍 可观测性 | `src/laserMapping.cpp` | 一眼核对实际生效参数 |
-| 5 | 参数调整（`point_filter_num`、`max_iter`） | ⚙️ 调参 | `launch/mapping_mid360.launch.py` | 见第 5 节 |
+| # | 优化项                                         | 类型                     | 文件                                                                              | 收益                                                  |
+| - | ---------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 1 | `blind` 判据括号优先级 bug                   | 正确性                   | `src/preprocess.cpp`                                                            | 盲区过滤从"基本失效"变为生效                          |
+| 2 | **点时间戳被错误改写**                   | **正确性（严重）** | `src/preprocess.cpp`                                                            | 单帧耗时 **221 ms → 3.8 ms**；恢复逐点运动补偿 |
+| 3 | iEKF 迭代次数可配 + 协方差更新时机             | 能力 + 正确性            | `include/IKFoM/.../esekfom.hpp`、`src/parameters.*`、`src/laserMapping.cpp` | 可调精度/算力；避免协方差过度收缩                     |
+| 4 | 启动自检日志                                   | 可观测性                 | `src/laserMapping.cpp`                                                          | 一眼核对实际生效参数                                  |
+| 5 | 参数调整（`point_filter_num`、`max_iter`） | 调参                     | `launch/mapping_mid360.launch.py`                                               | 见第 5 节                                             |
 
 ---
 
-# 1. 修复 `blind` 判据的括号优先级 bug
+# 1. 修复 `blind` 判据
 
 **文件**：[`src/preprocess.cpp`](../point_lio/src/9000_point_lio_ros2_Mid-360/src/preprocess.cpp) `Preprocess::avia_handler()`，131–145 行
 
@@ -70,15 +69,15 @@ if (moved && range2 > blind * blind) {
 
 把新旧判据抽成独立小程序，7 组用例全部符合预期：
 
-| 用例 | 修复前 | 修复后 | 期望 |
-| ---- | ------ | ------ | ---- |
-| 0.05 m，x 变化 | KEEP | **DROP** | DROP |
-| 0.05 m，仅 z 变化 | DROP | DROP | DROP |
-| 0.20 m | KEEP | KEEP | KEEP |
-| 3.00 m | KEEP | KEEP | KEEP |
-| 坐标完全重复 | DROP | DROP | DROP |
-| 0.0999 m（盲区内） | KEEP | **DROP** | DROP |
-| 0.1001 m（盲区外） | KEEP | KEEP | KEEP |
+| 用例               | 修复前 | 修复后         | 期望 |
+| ------------------ | ------ | -------------- | ---- |
+| 0.05 m，x 变化     | KEEP   | **DROP** | DROP |
+| 0.05 m，仅 z 变化  | DROP   | DROP           | DROP |
+| 0.20 m             | KEEP   | KEEP           | KEEP |
+| 3.00 m             | KEEP   | KEEP           | KEEP |
+| 坐标完全重复       | DROP   | DROP           | DROP |
+| 0.0999 m（盲区内） | KEEP   | **DROP** | DROP |
+| 0.1001 m（盲区外） | KEEP   | KEEP           | KEEP |
 
 ## 1.4 影响评估
 
@@ -88,7 +87,7 @@ if (moved && range2 > blind * blind) {
 
 ---
 
-# 2. 修复点时间戳被错误改写（本次最重要的优化）
+# 2. 修复点时间戳分组
 
 **文件**：[`src/preprocess.cpp`](../point_lio/src/9000_point_lio_ros2_Mid-360/src/preprocess.cpp) `Preprocess::avia_handler()`，100–129 行
 
@@ -96,12 +95,12 @@ if (moved && range2 > blind * blind) {
 
 ```cpp
 // 修复前
-pl_full[i].curvature = msg->points[i].offset_time / float(1000000);  // 帧内偏移，单位 ms
+pl_full[i].curvature = msg->points[i].offset_time / float(1000000);  // 帧内偏移
 
 if (i == 0) pl_full[i].curvature = fabs(pl_full[i].curvature) < 1.0 ? pl_full[i].curvature : 0.0;
-else pl_full[i].curvature =
-             fabs(pl_full[i].curvature - pl_full[i - 1].curvature) < 1.0 ? pl_full[i].curvature
-                                                                        : pl_full[i - 1].curvature + 0.004166667f;
+else pl_full[i].curvature = 
+  fabs(pl_full[i].curvature - pl_full[i - 1].curvature) < 1.0 ? pl_full[i].curvature
+                                               : pl_full[i - 1].curvature + 0.004166667f;
 ```
 
 这段"时间戳连续性检查"是上游 FAST-LIO 的写法，**隐含假设 `point_filter_num == 1`**（即相邻两点都被保留、`pl_full[i-1].curvature` 一定有值）。
@@ -122,12 +121,12 @@ keep=3199  groups=32  max_group=3168   ← 3168 个点落进同一个时间组
 
 ## 2.2 连锁影响（比"精度差一点"严重）
 
-| # | 后果 | 说明 |
-| - | ---- | ---- |
-| ① | **逐点更新退化为"整帧一次更新"** | `time_compressing` 按相同 curvature 分组，所有点被当作在 `t≈0` 时刻测得，帧内 100 ms 的运动补偿完全丢失——这正是 Point-LIO 相对 FAST-LIO2 的核心优势 |
-| ② | **求解复杂度 O(N) → O(N³)** | 单组点数 N≈3168，量测矩阵变成 N×N，`HPHT.inverse()` 立方增长 |
-| ③ | **`lidar_end_time` 早了约 100 ms** | `lidar_end_time = lidar_beg_time + max(curvature)/1000`，于是 odom 时间戳整体提前，下游用 `now()` 查 TF 会看到约 100 ms 滞后 |
-| ④ | **批次线性化误差** | 整帧共用一次 EM 线性化点，产生随运动增大的系统性偏差（见 2.4 中被撤回的旧结论） |
+| #  | 后果                                       | 说明                                                                                                                                                       |
+| -- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ① | **逐点更新退化为"整帧一次更新"**     | `time_compressing` 按相同 curvature 分组，所有点被当作在 `t≈0` 时刻测得，帧内 100 ms 的运动补偿完全丢失——这正是 Point-LIO 相对 FAST-LIO2 的核心优势 |
+| ② | **求解复杂度 O(N) → O(N³)**        | 单组点数 N≈3168，量测矩阵变成 N×N，`HPHT.inverse()` 立方增长                                                                                           |
+| ③ | **`lidar_end_time` 早了约 100 ms** | `lidar_end_time = lidar_beg_time + max(curvature)/1000`，于是 odom 时间戳整体提前，下游用 `now()` 查 TF 会看到约 100 ms 滞后                           |
+| ④ | **批次线性化误差**                   | 整帧共用一次 EM 线性化点，产生随运动增大的系统性偏差（见 2.4 中被撤回的旧结论）                                                                            |
 
 ## 2.3 修复
 
@@ -164,23 +163,23 @@ has_prev_kept = true;
 
 ### (a) 分组数与耗时（合成数据：静止房间，约 9600 点/帧）
 
-| 指标 | 修复前 | 修复后 |
-| ---- | ------ | ------ |
-| 每帧分组数（pf=3） | **32**（最大组 3168） | **3199**（每组 1 点） |
-| 每帧更新耗时 `icp`（pf=3） | **221 ms** | **3.8 ms** |
-| 每帧更新耗时 `icp`（pf=4） | 19.6 ms | **1.9 ms** |
-| 耗时随点数关系 | 近似立方 | **线性** |
+| 指标                         | 修复前                      | 修复后                      |
+| ---------------------------- | --------------------------- | --------------------------- |
+| 每帧分组数（pf=3）           | **32**（最大组 3168） | **3199**（每组 1 点） |
+| 每帧更新耗时 `icp`（pf=3） | **221 ms**            | **3.8 ms**            |
+| 每帧更新耗时 `icp`（pf=4） | 19.6 ms                     | **1.9 ms**            |
+| 耗时随点数关系               | 近似立方                    | **线性**              |
 
 > 修复前 "点更少反而更慢"（pf=4 比 pf=3 快 11 倍）正是 O(N³) 的直接证据。
 
 ### (b) 精度（修复后，静止 / 匀速 0.3 m/s 各 10 s）
 
-| 配置 | 静止偏移 | 匀速 dy（真值 2.97 m） | 速度估计误差 | 每帧 `icp` |
-| ---- | -------- | ---------------------- | ------------ | ---------- |
-| pf=3, iter=1 | dx −1.2 mm | 2.9727 m | +0.0002 m/s | 7.2 ms |
-| **pf=3, iter=2（本项目）** | dx +4.0 mm | 2.9780 m | +0.0008 m/s | 9.3 ms |
-| pf=4, iter=1 | dx +0.5 mm | 2.9692 m | −0.0001 m/s | 3.9 ms |
-| pf=4, iter=2 | dx −4.6 mm | 2.9696 m | −0.0000 m/s | 5.4 ms |
+| 配置                             | 静止偏移    | 匀速 dy（真值 2.97 m） | 速度估计误差 | 每帧 `icp` |
+| -------------------------------- | ----------- | ---------------------- | ------------ | ------------ |
+| pf=3, iter=1                     | dx −1.2 mm | 2.9727 m               | +0.0002 m/s  | 7.2 ms       |
+| **pf=3, iter=2（本项目）** | dx +4.0 mm  | 2.9780 m               | +0.0008 m/s  | 9.3 ms       |
+| pf=4, iter=1                     | dx +0.5 mm  | 2.9692 m               | −0.0001 m/s | 3.9 ms       |
+| pf=4, iter=2                     | dx −4.6 mm | 2.9696 m               | −0.0000 m/s | 5.4 ms       |
 
 输出频率始终 10.00 Hz。
 
@@ -192,16 +191,23 @@ has_prev_kept = true;
 
 ## 2.5 影响评估与风险
 
-| 项 | 说明 |
-| -- | ---- |
-| **正向** | 恢复逐点运动补偿（Point-LIO 的核心机制）；CPU 大幅下降；odom 时间戳回到正确时刻 |
-| **行为变化** | 实车输出**会变**：帧内畸变补偿恢复后，原先被"整帧塌缩"掩盖的尺度/方向误差会重新暴露或修正 |
-| ⚠️ **历史标定需复核** | `mount_yaw=58°`、1.7% 尺度偏差都是在**bug 存在时**测的。建议重跑直行 1–3 m 与原地 180°。特别是尺度：修复前整帧被当作瞬时测量，推车 0.5 m/s × 0.1 s ≈ 5 cm 的系统性错位，可能是那 1.7% 的一部分来源 |
-| **兼容性** | 仅影响 `lidar_type == AVIA`（Livox 自定义格式）分支；velodyne / ouster / hesail / unilidar 分支未改动 |
+| 项                       | 说明                                                                                                                                                                                                            |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **正向**           | 恢复逐点运动补偿（Point-LIO 的核心机制）；CPU 大幅下降；odom 时间戳回到正确时刻                                                                                                                                 |
+| **行为变化**       | 实车输出**会变**：帧内畸变补偿恢复后，原先被"整帧塌缩"掩盖的尺度/方向误差会重新暴露或修正                                                                                                                 |
+| **历史标定需复核** | `mount_yaw=58°`、1.7% 尺度偏差都是在**bug 存在时**测的。建议重跑直行 1–3 m 与原地 180°。特别是尺度：修复前整帧被当作瞬时测量，推车 0.5 m/s × 0.1 s ≈ 5 cm 的系统性错位，可能是那 1.7% 的一部分来源 |
+| **兼容性**         | 仅影响 `lidar_type == AVIA`（Livox 自定义格式）分支；velodyne / ouster / hesail / unilidar 分支未改动                                                                                                         |
 
 ---
 
 # 3. iEKF 迭代次数可配置 + 协方差更新时机修正
+
+```properties
+[submodule "include/IKFoM"]
+	path = include/IKFoM
+	url = https://github.com/hku-mars/IKFoM.git
+	branch = toolkit
+```
 
 **文件**：
 [`include/IKFoM/IKFoM_toolkit/esekfom/esekfom.hpp`](../point_lio/src/9000_point_lio_ros2_Mid-360/include/IKFoM/IKFoM_toolkit/esekfom/esekfom.hpp)、
@@ -312,12 +318,12 @@ x_.boxplus(dx_);
 
 ## 3.5 验证
 
-| 检查 | 结果 |
-| ---- | ---- |
-| `max_iter=1`（代码默认） | 启动日志 `IEKF maximum_iter = 1`，与旧版行为等价 |
-| `max_iter=2`（mid360 launch） | 启动日志 `IEKF maximum_iter = 2` |
-| 其它 lidar launch（裸跑 `pointlio_mapping`） | `max_iter = 1`，**不受影响** |
-| 精度收益（合成数据） | iter=1 vs 2 均为毫米级，**未观察到精度差异**；耗时 +20~40% |
+| 检查                                           | 结果                                                             |
+| ---------------------------------------------- | ---------------------------------------------------------------- |
+| `max_iter=1`（代码默认）                     | 启动日志 `IEKF maximum_iter = 1`，与旧版行为等价               |
+| `max_iter=2`（mid360 launch）                | 启动日志 `IEKF maximum_iter = 2`                               |
+| 其它 lidar launch（裸跑 `pointlio_mapping`） | `max_iter = 1`，**不受影响**                             |
+| 精度收益（合成数据）                           | iter=1 vs 2 均为毫米级，**未观察到精度差异**；耗时 +20~40% |
 
 > 因此 `max_iter=2` 在合成数据上属于"便宜的保险"：真实数据是非线性的（近邻会变、法向会变、有动态物体），第二轮重线性化有价值；但若 CPU 紧张，改回 1 是有依据的选择。
 
@@ -365,6 +371,7 @@ preprocess: scan_line=6 point_filter_num=3 blind=0.1 max_iter=2
 3. **退化场景需要余量**：载荷遮挡、正对单面墙、走廊等场景有效点骤减，多的那 ~1.7k 点是"还能不能配上"的差别。
 
 **换成 4 的条件**（任一满足即降）：
+
 - `ros2 topic hz /aft_mapped_to_init` 低于 10 Hz；
 - `top -H` 看 `pointlio_mapping` 单核 > 80% 且与 RViz/打印节点抢核；
 - 机载算力很弱（低功耗 ARM 板），可进一步用 4,1。
@@ -390,7 +397,7 @@ preprocess: scan_line=6 point_filter_num=3 blind=0.1 max_iter=2
 ```bash
 cd ~/point_lio && source /opt/ros/humble/setup.bash
 colcon build --packages-select point_lio --symlink-install
-# Finished <<< point_lio [7.64s]  ✅
+# Finished <<< point_lio [7.64s]  
 ```
 
 ## 6.2 启动核对
@@ -411,9 +418,9 @@ preprocess: scan_line=6 point_filter_num=3 blind=0.1 max_iter=2
 
 为保证"改的是真实链路"而不是"另起一套参数"，测试用真实 `mapping_mid360.launch.py` 启动，另写一个合成 Mid-360 发布器（静止房间 + 可配置匀速运动，9600 点/帧、10 Hz、IMU 200 Hz）：
 
-| 场景 | 结果 |
-| ---- | ---- |
-| 静止 10 s | 10.00 Hz，dx −0.8 mm / dz +0.1 mm，0 error |
+| 场景              | 结果                                                                   |
+| ----------------- | ---------------------------------------------------------------------- |
+| 静止 10 s         | 10.00 Hz，dx −0.8 mm / dz +0.1 mm，0 error                            |
 | 匀速 0.3 m/s 10 s | 10.00 Hz，dy 2.9711 m（理论 2.97），v_est 0.3002，dx −3.4 mm，0 error |
 
 > 合成数据是理想平面、无噪声、无运动畸变，只用于验证**功能正确性**与**量级**，不能替代实车标定。
@@ -454,17 +461,17 @@ cd ~/point_lio && colcon build --packages-select point_lio --symlink-install
 
 # 8. 待实车确认（重点）
 
-| 优先级 | 检查项 | 命令 / 方法 | 通过标准 |
-| ------ | ------ | ----------- | -------- |
-| **P0** | 时间戳修复是否真的生效 | `ros2 topic hz /aft_mapped_to_init` | 稳定 **10.00 Hz**（修复前可能低于 10） |
-| **P0** | CPU 是否下降 | `top -H -p $(pgrep -f pointlio_mapping)` | 单核 < 70% |
-| **P0** | odom 时间戳不再偏 100 ms | `ros2 topic echo /aft_mapped_to_init --field header.stamp` 与 `date +%s` 对比 | 差值 ≈ 帧时长（≈0.1 s），不是 0.004 s |
-| **P0** | **尺度是否改善** | 直行 3 m（地面贴基准），读终点 Δy | 与卷尺差 ≤ 1 cm（对应 ≤0.3%）；对比修复前 3.048 m |
-| P1 | 横向误差 | 同上，读 Δx | ≤ 2 cm |
-| P1 | 静止抖动 | 静止 10 s 读 `/global/chassis_odom` | ≤ 5 mm |
-| P1 | 原地 180° 杠杆臂 | 原地转 180° | 位移 ≈ 0.62 m（trim 后 0.66 m） |
-| P1 | 盲区过滤 | RViz 看 `/cloud_registered` | 自车周围无"贴脸"假平面 |
-| P2 | 长时间稳定性 | 连续跑 20 min | 无掉帧、无内存持续增长 |
+| 优先级       | 检查项                   | 命令 / 方法                                                                       | 通过标准                                            |
+| ------------ | ------------------------ | --------------------------------------------------------------------------------- | --------------------------------------------------- |
+| **P0** | 时间戳修复是否真的生效   | `ros2 topic hz /aft_mapped_to_init`                                             | 稳定 **10.00 Hz**（修复前可能低于 10）        |
+| **P0** | CPU 是否下降             | `top -H -p $(pgrep -f pointlio_mapping)`                                        | 单核 < 70%                                          |
+| **P0** | odom 时间戳不再偏 100 ms | `ros2 topic echo /aft_mapped_to_init --field header.stamp` 与 `date +%s` 对比 | 差值 ≈ 帧时长（≈0.1 s），不是 0.004 s             |
+| **P0** | **尺度是否改善**   | 直行 3 m（地面贴基准），读终点 Δy                                                | 与卷尺差 ≤ 1 cm（对应 ≤0.3%）；对比修复前 3.048 m |
+| P1           | 横向误差                 | 同上，读 Δx                                                                      | ≤ 2 cm                                             |
+| P1           | 静止抖动                 | 静止 10 s 读 `/global/chassis_odom`                                             | ≤ 5 mm                                             |
+| P1           | 原地 180° 杠杆臂        | 原地转 180°                                                                      | 位移 ≈ 0.62 m（trim 后 0.66 m）                    |
+| P1           | 盲区过滤                 | RViz 看 `/cloud_registered`                                                     | 自车周围无"贴脸"假平面                              |
+| P2           | 长时间稳定性             | 连续跑 20 min                                                                     | 无掉帧、无内存持续增长                              |
 
 ## 8.1 如果实车结果变差，按这个顺序排查
 
@@ -473,7 +480,7 @@ cd ~/point_lio && colcon build --packages-select point_lio --symlink-install
 3. **再看尺度**：若 3 m 走成 3.05 m，且**修复前后一样**，说明与本次改动无关，是 `time_lag_imu_to_lidar` / `acc_norm` 层面的问题（见 `to_update.md` 3.1.2）；
 4. **最后看外参**：若 Δx 系统性偏大且重复性好，才是 `mount_*` 的问题。
 
-> ⚠️ **不要一上来就调 `mount_*`**。本次修复改变了帧内运动补偿，历史标定值可能对不上，但方向性误差（Δx）与尺度误差（Δy）要分开看。
+> **不要一上来就调 `mount_*`**。本次修复改变了帧内运动补偿，历史标定值可能对不上，但方向性误差（Δx）与尺度误差（Δy）要分开看。
 
 ---
 

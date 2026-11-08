@@ -41,7 +41,7 @@ double deg2rad(double d)
 {
   return d * M_PI / 180.0;
 }
-}  // namespace
+}  
 
 class ChassisOdom : public rclcpp::Node
 {
