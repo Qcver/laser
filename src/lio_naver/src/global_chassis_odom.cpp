@@ -7,13 +7,13 @@
 //   body 坐标系 B：x 前 / y 左 / z 上（Point-LIO 输出，假设值）
 //
 // 相比 chassis_odom 多三级处理：
-//   ① 平移外参：由“雷达中心在底盘系中的实测坐标” lidar_x/y/z 推出
+//   1 平移外参：由“雷达中心在底盘系中的实测坐标” lidar_x/y/z 推出
 //        t_BC = -R_BC * d_C + trim            (t_BC 在 body 系中表达)
 //      把输出参考点从雷达原点搬到**底盘中心**
-//   ② 全局偏置：锚定之后再左乘常量 A = ( Rz(map_yaw_deg), (map_x,map_y,map_z) )
+//   2 全局偏置：锚定之后再左乘常量 A = ( Rz(map_yaw_deg), (map_x,map_y,map_z) )
 //        T_out = A * anchor * T_WC
 //      使开机瞬间底盘中心 = (map_x, map_y, map_z)、航向 = map_yaw_deg
-//   ③ twist 杠杆臂补偿：Point-LIO 的 twist.linear 是 body 原点速度，
+//   3 twist 杠杆臂补偿：Point-LIO 的 twist.linear 是 body 原点速度，
 //      底盘中心需要补上 ω × r 项
 //
 // 变换链：
@@ -86,7 +86,7 @@ public:
     }
 
     // ---------------- 安装姿态（已标定值）----------------
-    // 直行标定：车头方向与 body x 轴相差约 58°（详见 chassis_odom.launch.py 注释）
+    // 直行标定：车头方向与 body x 轴相差约 58°
     mount_roll_deg_ = this->declare_parameter<double>("mount_roll_deg", 0.0);
     mount_pitch_deg_ = this->declare_parameter<double>("mount_pitch_deg", 0.0);
     mount_yaw_deg_ = this->declare_parameter<double>("mount_yaw_deg", 58.0);

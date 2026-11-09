@@ -1,8 +1,5 @@
 # Point-LIO 源码优化
 
-> **范围**：`~/point_lio/src/9000_point_lio_ros2_Mid-360`（上游 `9000_point_lio_ros2_Mid-360` fork）
-> **改动规模**：6 个文件，+79 / −22 行（`config/mid360.yaml` 未改动，那是此前的人工调参）
-
 ## 目录
 
 | # | 优化项                                         | 类型                     | 文件                                                                              | 收益                                                  |

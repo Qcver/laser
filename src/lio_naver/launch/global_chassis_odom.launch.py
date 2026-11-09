@@ -30,7 +30,7 @@ def generate_launch_description():
             'anchor_on_start': True,
             'anchor_samples': 10,
 
-            # ---- 安装姿态（2026-10-01 直行标定：车头与 body x 轴差约 58°）----
+            # ---- 安装姿态（直行标定：车头与 body x 轴差约 58°）----
             'mount_roll_deg': 0.0,
             'mount_pitch_deg': 0.0,
             'mount_yaw_deg': 58.0,
